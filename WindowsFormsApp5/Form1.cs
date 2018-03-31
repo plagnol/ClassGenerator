@@ -39,7 +39,11 @@ namespace WindowsFormsApp5
          **/
         public void generate()
         {
-            string fileName = 
+            string fileName = "test.php";
+
+            string pathString = System.IO.Path.Combine(this.selectedPath, fileName);
+
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

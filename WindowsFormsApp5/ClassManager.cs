@@ -9,8 +9,11 @@ namespace classGenerator
     class ClassManager
     {
         //List of attribut of the class
-        List<Attribut> attributs;
-        
+        private List<Attribut> attributs;
+
+        private string[] lines;
+
+        private string name;
         /**
          *Constructor of the class; 
          **/
