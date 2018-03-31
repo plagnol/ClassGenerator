@@ -45,21 +45,15 @@ namespace WindowsFormsApp5
         {
 
         }
-
+     
         /**
-         * Choose the folder to save the file on click
-         * this.selectedPath become the save folder
-         **/
-        private void button2_Click(object sender, EventArgs e)
+        * Choose the folder to save the file on click
+        * this.selectedPath become the save folder
+        **/
+        private void button2_Click_1(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
             this.selectedPath = folderBrowserDialog1.SelectedPath;
-
-        }
-
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
         }
     }
 }
