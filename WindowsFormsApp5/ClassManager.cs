@@ -32,6 +32,26 @@ namespace classGenerator
             return this.attributs;
         }
 
+        /**
+         * Get the name of the class
+         * return
+         * string @nameSend 
+         **/
+        public string getName()
+        {
+            return this.name;
+        }
+
+        /**
+         * Set the name of the class
+         * param 
+         * string @nameSend 
+         **/
+        public void setName(string nameSend)
+        {
+            this.name = nameSend;
+        }
+
         
     }
 }
