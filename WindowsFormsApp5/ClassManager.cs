@@ -19,7 +19,15 @@ namespace classGenerator
             this.attributs = new List<Attribut>();
         }
 
-        
+        /**
+         * Get the list of attributs of the class
+         * return 
+         * List<Attribut> 
+         **/
+        public List<Attribut> getListAttributs()
+        {
+            return this.attributs;
+        }
 
         
     }

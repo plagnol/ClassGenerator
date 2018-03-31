@@ -35,10 +35,11 @@ namespace WindowsFormsApp5
         /**
          * Generate function
          * generate file in php
+         * 
          **/
         public void generate()
         {
-
+            string fileName = 
         }
 
         private void label2_Click(object sender, EventArgs e)
