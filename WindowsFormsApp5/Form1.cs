@@ -16,9 +16,12 @@ namespace WindowsFormsApp5
 
         private ClassManager classManager;
 
+        private string selectedPath;
+
         public Form1()
         {
             InitializeComponent();
+            this.classManager = new ClassManager();
         }
 
         /**
@@ -34,6 +37,27 @@ namespace WindowsFormsApp5
          * generate file in php
          **/
         public void generate()
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**
+         * Choose the folder to save the file on click
+         * this.selectedPath become the save folder
+         **/
+        private void button2_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            this.selectedPath = folderBrowserDialog1.SelectedPath;
+
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
 
         }
