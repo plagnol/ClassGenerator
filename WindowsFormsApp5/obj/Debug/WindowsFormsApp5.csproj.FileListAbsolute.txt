@@ -1,0 +1,9 @@
+C:\Users\Antoine\source\repos\WindowsFormsApp5\ClassGenerator\WindowsFormsApp5\bin\Debug\classGenerator.exe.config
+C:\Users\Antoine\source\repos\WindowsFormsApp5\ClassGenerator\WindowsFormsApp5\bin\Debug\classGenerator.exe
+C:\Users\Antoine\source\repos\WindowsFormsApp5\ClassGenerator\WindowsFormsApp5\bin\Debug\classGenerator.pdb
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csprojResolveAssemblyReference.cache
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.Form1.resources
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csproj.GenerateResource.Cache
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csproj.CoreCompileInputs.cache
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\classGenerator.exe
+C:\Users\Antoine\source\repos\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\classGenerator.pdb
