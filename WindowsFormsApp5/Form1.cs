@@ -14,14 +14,13 @@ namespace WindowsFormsApp5
 {
     public partial class Form1 : Form
     {
+        private AttributManager attManager;
 
         private ClassManager classManager;
 
         private string selectedPath;
 
         private Boolean folderIsSelected = false;
-
-        private int nbrAttributs = 0;
 
         private Boolean isConnectDb;
 
@@ -31,6 +30,7 @@ namespace WindowsFormsApp5
             InitializeComponent();
             backgroundWorker1.RunWorkerAsync();
             this.classManager = new ClassManager();
+            this.attManager = new AttributManager();
         }
 
         /**
@@ -92,6 +92,7 @@ namespace WindowsFormsApp5
 
             if (this.isConnectDb)
             {
+                
                 MessageBox.Show("Files generated");
 
                 this.folderIsSelected = false;
@@ -141,7 +142,23 @@ namespace WindowsFormsApp5
                 {
                     this.isConnectDb = false;
                 }
-                
+
+
+                try
+                {
+                    int c = 0;
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        dataGridView2.Rows[c].Cells[0].Value = row.Cells[0].Value.ToString();
+                        dataGridView2.Rows[c].Cells[1].Value = row.Cells[1].Value.ToString();
+                        c += 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }                                           
             }
         }
 
@@ -227,6 +244,8 @@ namespace WindowsFormsApp5
 
                 }           
             }
+
+            this.attManager.setListAttributs(this.classManager.getListAttributs());
         }
     }
 }

@@ -48,10 +48,18 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Type1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameInDb = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrimaryKey = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -206,11 +214,57 @@
             // 
             this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.dataGridView2);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(381, 165);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(449, 262);
+            this.flowLayoutPanel2.TabIndex = 11;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Type1,
+            this.Name1,
+            this.NameInDb,
+            this.PrimaryKey});
+            this.dataGridView2.DataSource = this.classManagerBindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(444, 259);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // Type1
+            // 
+            this.Type1.HeaderText = "Type1";
+            this.Type1.Name = "Type1";
+            this.Type1.ReadOnly = true;
+            // 
+            // Name1
+            // 
+            this.Name1.HeaderText = "Name1";
+            this.Name1.Name = "Name1";
+            this.Name1.ReadOnly = true;
+            // 
+            // NameInDb
+            // 
+            this.NameInDb.HeaderText = "NameInDb";
+            this.NameInDb.Name = "NameInDb";
+            // 
+            // PrimaryKey
+            // 
+            this.PrimaryKey.HeaderText = "PrimaryKey";
+            this.PrimaryKey.Name = "PrimaryKey";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 478);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button3);
@@ -229,6 +283,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,6 +310,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameInDb;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PrimaryKey;
     }
 }
 
