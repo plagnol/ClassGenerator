@@ -12,6 +12,11 @@ namespace classGenerator
 
         private Boolean isPrimary;
 
+        public AttributManager()
+        {
+
+        }
+
 
         public AttributManager(string nameSend, string typeSend, string nameInDbSend, Boolean primary) : base(nameSend, typeSend)
         {

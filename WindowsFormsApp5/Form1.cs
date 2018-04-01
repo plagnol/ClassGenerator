@@ -24,6 +24,8 @@ namespace WindowsFormsApp5
 
         private Boolean isConnectDb;
 
+        private string principalTable;
+
         public Form1()
         {
             
@@ -107,7 +109,11 @@ namespace WindowsFormsApp5
                 List<string> att = this.classManager.getAttributManager();
                 System.IO.File.AppendAllLines(@pathStringUpdater, att);
 
+                List<string> setter = this.classManager.setSetterManager();
+                System.IO.File.AppendAllLines(@pathStringUpdater, setter);
 
+                List<string> function = this.classManager.setFunctionManager(this.principalTable, this.classManager.getListAttributsDb());
+                System.IO.File.AppendAllLines(@pathStringUpdater, function);
 
                 MessageBox.Show("Files generated");
 
@@ -148,6 +154,12 @@ namespace WindowsFormsApp5
                 {
                     this.classManager.setName(this.textBox2.Text);
                 }
+
+                if (!(String.IsNullOrEmpty(this.textBox1.Text)))
+                {
+                    this.principalTable = this.textBox2.Text;
+                }
+
 
                 if (radioButton1.Checked)
                 {
@@ -279,7 +291,7 @@ namespace WindowsFormsApp5
                     typeTest = row.Cells[0].Value.ToString();
                     nameTest = row.Cells[1].Value.ToString();
                     nameInDb = row.Cells[2].Value.ToString();
-                    primary = row.Cells[3].Selected;
+                    primary = Convert.ToBoolean(row.Cells[3].Value);
 
                     AttributManager att = new AttributManager(nameTest, typeTest, nameInDb, primary);
                     classManager.addAttributDb(att);

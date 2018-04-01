@@ -23,6 +23,7 @@ namespace classGenerator
         public ClassManager()
         {
             this.attributs = new List<Attribut>();
+            this.attributsDb = new List<AttributManager>();
         }
 
         /**
@@ -212,6 +213,7 @@ namespace classGenerator
         {
             List<string> line = new List<string>();
             string name = FirstCharToUpper(att.getName());
+
             line.Add(" ");
             line.Add("/**");
             line.Add("  *@param " + att.getType() + " $" + att.getName());
@@ -227,7 +229,7 @@ namespace classGenerator
 
         public List<string> setSetterManager()
         {
-            List<string> line = new List<string>();
+            List<string> line = new List<string>();            
 
             line.Add(" ");
             line.Add("    /**");
@@ -239,6 +241,136 @@ namespace classGenerator
             line.Add("      {");
             line.Add("          $this->db = $bdd;");
             line.Add("      }");
+
+            return line;
+        }
+
+        public List<string> setFunctionManager(string principalTable, List<AttributManager> attibutMan)
+        {
+            List<string> line = new List<string>();
+            string name = FirstCharToUpper(this.name);
+
+            line.Add(" ");
+            line.Add("    /**");
+            line.Add("     * Insert into the database");
+            line.Add("     */");
+            line.Add(" ");
+            line.Add("      public function insert" + name + "ToDatabase($" + this.name +")");
+            line.Add("      {");
+            line.Add("          $insertDb = $this->db->prepare('" + insertSql(principalTable, attibutMan) + "');");
+            line.Add("          $insertDb->execute();");
+            line.Add("      }");
+            line.Add(" ");
+            line.Add("    /**");
+            line.Add("     * Delete " + name + " from database with an Id");
+            line.Add("     */");
+            line.Add(" ");
+            line.Add("      public function delete" + name + "FromId($id)");
+            line.Add("      {");
+            line.Add("          $deleteDb = $this->db->prepare('" + deleteSql(principalTable, attibutMan) + ");");
+            line.Add("          $deleteDb->execute();");
+            line.Add("      }");
+            line.Add(" ");
+            line.Add("    /**");
+            line.Add("     * Select " + name + " from database with an Id");
+            line.Add("     */");
+            line.Add(" ");
+            line.Add("      public function select" + name + "FromId($id)");
+            line.Add("      {");
+            line.Add("          $selectDb = $this->db->prepare('" + selectSql(principalTable, attibutMan) + ");");
+            line.Add("          $selectDb->execute();");
+            line.Add("          $check = $selectDb->rowCount();");
+            line.Add("          if($check == 1)");
+            line.Add("          {");
+            line = this.fillDataSelect(principalTable, attibutMan, line);
+            line.Add("              return $user");
+            line.Add("          }");
+
+            return line;
+        }
+
+        private string insertSql(string principalTable, List<AttributManager> attibutMan)
+        {
+            string request = "INSERT INTO `" + principalTable + "`(";
+            AttributManager last = attibutMan.Last();
+            foreach (AttributManager result in attibutMan)
+            {
+                if (!result.getIsPrimary())
+                {
+                    if (!result.Equals(last))
+                    {
+                        request += " `" + result.getNameInDb() + "`,";
+                }
+                    else
+                    {
+                        request += " `" + result.getNameInDb() + "`)";
+                    }
+                }
+                
+            }
+
+            request += " VALUES (";
+
+            foreach (AttributManager result in this.attributsDb)
+            {
+                if (!result.getIsPrimary())
+                {
+                    if (!result.Equals(last))
+                    {
+                        request += " ' . $" + this.name + "->get" + result.getName() + "() . ',";
+                    }
+                    else
+                    {
+                        request += " ' . $" + this.name + "->get" + result.getName() + "() . ')";
+                    }
+                }
+
+            }
+            
+            return request;
+        }
+
+        private string deleteSql(string principalTable, List<AttributManager> attibutMan)
+        {
+            string request = "DELETE FROM "+ principalTable +" WHERE ";
+
+            foreach (AttributManager result in this.attributsDb)
+            {
+                if (result.getIsPrimary())
+                {
+                    request += result.getNameInDb() + " = ' . $id";
+                }
+
+            }
+
+            return request;
+        }
+
+        private string selectSql(string principalTable, List<AttributManager> attibutMan)
+        {
+            string request = "SELECT * FROM " + principalTable + " WHERE ";
+
+            foreach (AttributManager result in this.attributsDb)
+            {
+                if (result.getIsPrimary())
+                {
+                    request += result.getNameInDb() + " = ' . $id";
+                }
+
+            }
+
+            return request;
+        }
+
+        private List<string> fillDataSelect(string principalTable, List<AttributManager> attibutMan, List<string> line)
+        {
+            line.Add("              $" + this.name +" = new " + this.name +"();");
+            line.Add("              $userinfo = $selectDb->fetch(PDO::FETCH_ASSOC);");
+            foreach (AttributManager result in this.attributsDb)
+            {
+
+                 line.Add("              $" + this.name + "->set" + result.getName() + " ( $userinfo['" + result.getNameInDb()  + "'] ); ");
+            }
 
             return line;
         }
