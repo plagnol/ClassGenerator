@@ -52,7 +52,7 @@ namespace classGenerator
         }
 
         /**
-         * 
+         * Set the header in the class file
          */
         public string[] setHeader()
         {
@@ -75,11 +75,28 @@ namespace classGenerator
             return line;
         }
 
-        public void addAttribut()
+        /**
+         * Add attribut to the class
+         * param
+         * Attribut @att
+         * 
+         * return void
+         */
+        public void addAttribut(Attribut att)
         {
-
+            this.attributs.Add(att);
         }
 
+
+        public List<string> getAttribut(Attribut att)
+        {
+            List<string> line = new List<string>();
+
+            line.Add(" ");
+            line.Add( "    private " + att.getName());
+
+            return line;
+        }
         
     }
 }

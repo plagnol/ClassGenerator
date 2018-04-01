@@ -20,6 +20,15 @@ namespace classGenerator
         private string type;
 
         /**
+        * 
+        * Constructor of the class without param
+        * return void
+        */
+        public Attribut()
+        {
+            
+        }
+        /**
          * 
          * Constructor of the class
          * 2 params : 

@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,11 +21,14 @@ namespace WindowsFormsApp5
 
         private Boolean folderIsSelected = false;
 
+        private int nbrAttributs = 0;
+
         public Form1()
         {
             
             InitializeComponent();
             backgroundWorker1.RunWorkerAsync();
+            backgroundWorker2.RunWorkerAsync();
             this.classManager = new ClassManager();
         }
 
@@ -34,7 +38,15 @@ namespace WindowsFormsApp5
          */
         private void button1_Click(object sender, EventArgs e)
         {
-            this.generate();
+            if (this.folderIsSelected)
+            {
+                this.generate();
+            }
+            else
+            {
+                MessageBox.Show("You have to choose a folder before generate class file");
+            }
+            
         }
         /**
          * Generate function
@@ -43,13 +55,25 @@ namespace WindowsFormsApp5
          */
         public void generate()
         {
+            //Set the file name
             string fileName = this.classManager.getName() + ".class.php";
 
+            //Set the path to save the file
             string pathString = System.IO.Path.Combine(this.selectedPath, fileName);
 
+            //Set the header of the file
             string[] header = this.classManager.setHeader();
+            System.IO.File.WriteAllLines(@pathString, header);
 
-            System.IO.File.WriteAllLines(@pathString, header );
+            //Set the attributs
+            foreach (Attribut result in this.classManager.getListAttributs())
+            {
+                List<string> att = this.classManager.getAttribut(result);
+                MessageBox.Show(att[1]);
+                System.IO.File.AppendAllLines(@pathString, att);
+            }
+
+            
 
             MessageBox.Show("File generated");
 
@@ -76,7 +100,11 @@ namespace WindowsFormsApp5
         {
             while (true)
             {
-                this.classManager.setName(this.textBox2.Text);
+                if (!(String.IsNullOrEmpty(this.textBox2.Text)))
+                {
+                    this.classManager.setName(this.textBox2.Text);
+                }
+                
             }
         }
 
@@ -144,6 +172,25 @@ namespace WindowsFormsApp5
         {
             while (true)
             {
+
+                int count = dataGridView1.Rows.Count;
+                if (count > this.nbrAttributs)
+                {
+                    string nameTest = dataGridView1.Rows[count - 1].Cells[0].Value.ToString();
+                    string typeTest = dataGridView1.Rows[count - 1].Cells[1].Value.ToString();
+
+                    this.nbrAttributs = count;
+                    if (!(String.IsNullOrEmpty(nameTest)) && !(String.IsNullOrEmpty(typeTest)))
+                    {
+                        Attribut att = new Attribut(nameTest, typeTest);
+                        classManager.addAttribut(att);
+                        MessageBox.Show("Att ajouter");
+                    }
+                }
+                else
+                {
+                    Thread.Sleep(100);
+                }
 
             }
         }
