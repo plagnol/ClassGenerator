@@ -13,6 +13,8 @@ namespace classGenerator
         
 
         private string name;
+
+        private string nameUpdater;
         /**
          *Constructor of the class; 
          */
@@ -34,11 +36,22 @@ namespace classGenerator
         /**
          * Get the name of the class
          * return
-         * string @nameSend 
+         * string @name 
          */
         public string getName()
         {
             return this.name;
+        }
+
+
+        /**
+         * Get the name of the classUpdater
+         * return
+         * string @nameUpdater 
+         */
+        public string getNameUpdater()
+        {
+            return this.nameUpdater;
         }
 
         /**
@@ -49,6 +62,17 @@ namespace classGenerator
         public void setName(string nameSend)
         {
             this.name = nameSend;
+            this.setNameUpdater(nameSend);
+        }
+
+        /**
+        * Set the name of the classUpdater
+        * param 
+        * string @nameSend 
+        */
+        private void setNameUpdater(string nameSend)
+        {
+            this.nameUpdater = nameSend + "Updater";
         }
 
         /**
@@ -93,7 +117,7 @@ namespace classGenerator
             List<string> line = new List<string>();
 
             line.Add(" ");
-            line.Add( "    private " + att.getName() + " ;" );
+            line.Add( "    private $" + att.getName() + ";" );
 
             return line;
         }
@@ -115,6 +139,23 @@ namespace classGenerator
             return line;
         }
 
+
+        public List<string> setSetter(Attribut att)
+        {
+            List<string> line = new List<string>();
+            string name = FirstCharToUpper(att.getName());
+            line.Add(" ");
+            line.Add("/**");
+            line.Add("  *@param " + att.getType() + " $" + att.getName());
+            line.Add("  */");
+            line.Add("  ");
+            line.Add("public function set" + name + "( $" + att.getName() + " )");
+            line.Add("{");
+            line.Add("    $this->" + att.getName() + " = $" + att.getName() + ";");
+            line.Add("}");
+
+            return line;
+        }
         /**
          * Put the first carac of a string to upper
          * param

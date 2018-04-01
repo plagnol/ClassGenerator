@@ -23,6 +23,8 @@ namespace WindowsFormsApp5
 
         private int nbrAttributs = 0;
 
+        private Boolean isConnectDb;
+
         public Form1()
         {
             
@@ -80,11 +82,29 @@ namespace WindowsFormsApp5
                 System.IO.File.AppendAllLines(@pathString, att);
             }
 
+            //Set the setters
+            foreach (Attribut result in this.classManager.getListAttributs())
+            {
+                List<string> att = this.classManager.setSetter(result);
+                System.IO.File.AppendAllLines(@pathString, att);
+            }
 
 
-            MessageBox.Show("File generated");
+            if (this.isConnectDb)
+            {
+                MessageBox.Show("Files generated");
 
-            this.folderIsSelected = false;
+                this.folderIsSelected = false;
+            }
+            else
+            {
+                MessageBox.Show("File generated");
+
+                this.folderIsSelected = false;
+            }
+
+
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -110,6 +130,16 @@ namespace WindowsFormsApp5
                 if (!(String.IsNullOrEmpty(this.textBox2.Text)))
                 {
                     this.classManager.setName(this.textBox2.Text);
+                }
+
+                if (radioButton1.Checked)
+                {
+                    this.isConnectDb = true;
+                }
+
+                if (radioButton2.Checked)
+                {
+                    this.isConnectDb = false;
                 }
                 
             }
