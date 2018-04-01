@@ -106,7 +106,7 @@ namespace classGenerator
             line.Add("/**");
             line.Add("  *@return " + att.getType());
             line.Add("  */");
-            line.Add("  *");
+            line.Add("  ");
             line.Add("public function get" + name + "()");
             line.Add("{");
             line.Add("    return $this->" + att.getName() +";");

@@ -70,11 +70,17 @@ namespace WindowsFormsApp5
             foreach (Attribut result in this.classManager.getListAttributs())
             {
                 List<string> att = this.classManager.getAttribut(result);
-                MessageBox.Show(att[1]);
                 System.IO.File.AppendAllLines(@pathString, att);
             }
 
-            
+            //Set the getters
+            foreach (Attribut result in this.classManager.getListAttributs())
+            {
+                List<string> att = this.classManager.setGetter(result);
+                System.IO.File.AppendAllLines(@pathString, att);
+            }
+
+
 
             MessageBox.Show("File generated");
 
@@ -169,32 +175,6 @@ namespace WindowsFormsApp5
             }
         }
 
-        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (true)
-            {
-
-                int count = dataGridView1.Rows.Count;
-                if (count > this.nbrAttributs)
-                {
-                    string nameTest = dataGridView1.Rows[count - 1].Cells[0].Value.ToString();
-                    string typeTest = dataGridView1.Rows[count - 1].Cells[1].Value.ToString();
-
-                    this.nbrAttributs = count;
-                    if (!(String.IsNullOrEmpty(nameTest)) && !(String.IsNullOrEmpty(typeTest)))
-                    {
-                        Attribut att = new Attribut(nameTest, typeTest);
-                        classManager.addAttribut(att);
-                        MessageBox.Show("Att ajouter");
-                    }
-                }
-                else
-                {
-                    Thread.Sleep(100);
-                }
-
-            }
-        }
 
         private void setDataAttribut()
         {
@@ -211,14 +191,11 @@ namespace WindowsFormsApp5
 
                     Attribut att = new Attribut(nameTest, typeTest);
                     classManager.addAttribut(att);
-                    MessageBox.Show("Att ajouter");
                 }
                 catch (Exception ex)
                 {
 
-                }
-
-            
+                }           
             }
         }
     }
