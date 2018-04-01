@@ -28,7 +28,6 @@ namespace WindowsFormsApp5
             
             InitializeComponent();
             backgroundWorker1.RunWorkerAsync();
-            backgroundWorker2.RunWorkerAsync();
             this.classManager = new ClassManager();
         }
 
@@ -65,7 +64,9 @@ namespace WindowsFormsApp5
             string[] header = this.classManager.setHeader();
             System.IO.File.WriteAllLines(@pathString, header);
 
+
             //Set the attributs
+            this.setDataAttribut();
             foreach (Attribut result in this.classManager.getListAttributs())
             {
                 List<string> att = this.classManager.getAttribut(result);
@@ -192,6 +193,32 @@ namespace WindowsFormsApp5
                     Thread.Sleep(100);
                 }
 
+            }
+        }
+
+        private void setDataAttribut()
+        {
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                string nameTest = "";
+
+                string typeTest = "";
+
+                try
+                {
+                    typeTest = row.Cells[0].Value.ToString();
+                    nameTest = row.Cells[1].Value.ToString();
+
+                    Attribut att = new Attribut(nameTest, typeTest);
+                    classManager.addAttribut(att);
+                    MessageBox.Show("Att ajouter");
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            
             }
         }
     }

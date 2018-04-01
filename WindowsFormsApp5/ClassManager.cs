@@ -93,10 +93,44 @@ namespace classGenerator
             List<string> line = new List<string>();
 
             line.Add(" ");
-            line.Add( "    private " + att.getName());
+            line.Add( "    private " + att.getName() + " ;" );
 
             return line;
         }
-        
+
+        public List<string> setGetter(Attribut att)
+        {
+            List<string> line = new List<string>();
+            string name = FirstCharToUpper(att.getName());
+            line.Add(" ");
+            line.Add("/**");
+            line.Add("  *@return " + att.getType());
+            line.Add("  */");
+            line.Add("  *");
+            line.Add("public function get" + name + "()");
+            line.Add("{");
+            line.Add("    return $this->" + att.getName() +";");
+            line.Add("}");
+
+            return line;
+        }
+
+        /**
+         * Put the first carac of a string to upper
+         * param
+         * string @input
+         * 
+         * return 
+         * string
+         */
+        private static string FirstCharToUpper(string input)
+        {
+            switch (input)
+            {
+                case null: throw new ArgumentNullException(nameof(input));
+                case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
+                default: return input.First().ToString().ToUpper() + input.Substring(1);
+            }
+        }
     }
 }
