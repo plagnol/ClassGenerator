@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pcmaster.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -63,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribut.cs" />
+    <Compile Include="AttributManager.cs" />
     <Compile Include="ClassManager.cs" />
     <Compile Include="..\ClassGenerator\WindowsFormsApp5\Form1.cs">
       <Link>Form1.cs</Link>
@@ -79,6 +83,7 @@
       <Link>Form1.resx</Link>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\ClassManager.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +105,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pcmaster.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

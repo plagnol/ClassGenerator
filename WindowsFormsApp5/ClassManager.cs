@@ -223,6 +223,7 @@ namespace classGenerator
             line.Add("      {");
             line.Add("           $this->" + att.getName() + " = $" + att.getName() + ";");
             line.Add("      }");
+            
 
             return line;
         }

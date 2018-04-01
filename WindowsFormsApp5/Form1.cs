@@ -90,7 +90,9 @@ namespace WindowsFormsApp5
                 List<string> att = this.classManager.setSetter(result);
                 System.IO.File.AppendAllLines(@pathString, att);
             }
-
+            List<string> end = new List<string>();
+            end.Add("}");
+            System.IO.File.AppendAllLines(@pathString, end);
 
             if (this.isConnectDb)
             {
