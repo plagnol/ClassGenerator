@@ -36,6 +36,16 @@ namespace classGenerator
         }
 
         /**
+         * Get the list of attributs of the class
+         * return 
+         * List<Attribut> 
+         */
+        public List<AttributManager> getListAttributsDb()
+        {
+            return this.attributsDb;
+        }
+
+        /**
          * Get the name of the class
          * return
          * string @name 
@@ -159,6 +169,27 @@ namespace classGenerator
             return line;
         }
 
+        public List<string> getAttributManager()
+        {
+            List<string> line = new List<string>();
+
+            line.Add(" ");
+            line.Add("    //Connection PDO");
+            line.Add("    private $db ;");
+            line.Add(" ");
+            line.Add("    /**");
+            line.Add("     * UserUpdater constructor.");
+            line.Add("     * @param $db : database");
+            line.Add("     */");
+            line.Add("      public function __construct($db)");
+            line.Add("      {");
+            line.Add("          $this->setDb($db);");
+            line.Add("      }");
+
+            return line;
+        }
+
+
         public List<string> setGetter(Attribut att)
         {
             List<string> line = new List<string>();
@@ -190,6 +221,24 @@ namespace classGenerator
             line.Add("{");
             line.Add("    $this->" + att.getName() + " = $" + att.getName() + ";");
             line.Add("}");
+
+            return line;
+        }
+
+        public List<string> setSetterManager()
+        {
+            List<string> line = new List<string>();
+
+            line.Add(" ");
+            line.Add("    /**");
+            line.Add("     * set the database");
+            line.Add("     * @param PDO $db database");
+            line.Add("     */");
+            line.Add(" ");
+            line.Add("      public function setDb(PDO $bdd)");
+            line.Add("      {");
+            line.Add("          $this->db = $bdd;");
+            line.Add("      }");
 
             return line;
         }

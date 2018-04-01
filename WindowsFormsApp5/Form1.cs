@@ -99,8 +99,14 @@ namespace WindowsFormsApp5
                 string pathStringUpdater = System.IO.Path.Combine(this.selectedPath, fileNameUpdater);
 
                 //Set the header of the file
-                string[] headerDb = this.classManager.setHeader();
+                string[] headerDb = this.classManager.setHeaderDb();
                 System.IO.File.WriteAllLines(@pathStringUpdater, headerDb);
+
+                this.setDataAttributManager();
+
+                List<string> att = this.classManager.getAttributManager();
+                System.IO.File.AppendAllLines(@pathStringUpdater, att);
+
 
 
                 MessageBox.Show("Files generated");
@@ -254,6 +260,35 @@ namespace WindowsFormsApp5
 
                 }           
             }           
+        }
+
+        private void setDataAttributManager()
+        {
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                string nameTest = "";
+
+                string typeTest = "";
+
+                string nameInDb = "";
+
+                Boolean primary = false;
+
+                try
+                {
+                    typeTest = row.Cells[0].Value.ToString();
+                    nameTest = row.Cells[1].Value.ToString();
+                    nameInDb = row.Cells[2].Value.ToString();
+                    primary = row.Cells[3].Selected;
+
+                    AttributManager att = new AttributManager(nameTest, typeTest, nameInDb, primary);
+                    classManager.addAttributDb(att);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
     }
 }

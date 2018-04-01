@@ -12,6 +12,14 @@ namespace classGenerator
 
         private Boolean isPrimary;
 
+
+        public AttributManager(string nameSend, string typeSend, string nameInDbSend, Boolean primary) : base(nameSend, typeSend)
+        {
+            this.nameInDb = nameInDbSend;
+
+            this.isPrimary = primary;
+        }
+
         public string getNameInDb()
         {
             return this.nameInDb;
