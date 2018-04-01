@@ -39,7 +39,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,12 +55,13 @@
             this.PrimaryKey = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -114,7 +114,7 @@
             this.flowLayoutPanel1.Controls.Add(this.dataGridView1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 162);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(248, 268);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(284, 268);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // dataGridView1
@@ -127,7 +127,7 @@
             this.dataGridView1.DataSource = this.classManagerBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(243, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(281, 262);
             this.dataGridView1.TabIndex = 0;
             // 
             // type
@@ -139,10 +139,6 @@
             // 
             this.name.HeaderText = "Name";
             this.name.Name = "name";
-            // 
-            // classManagerBindingSource
-            // 
-            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
             // 
             // backgroundWorker1
             // 
@@ -221,7 +217,7 @@
             this.flowLayoutPanel2.Controls.Add(this.dataGridView2);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(381, 165);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(449, 262);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(466, 262);
             this.flowLayoutPanel2.TabIndex = 11;
             // 
             // dataGridView2
@@ -236,7 +232,7 @@
             this.dataGridView2.DataSource = this.classManagerBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(444, 259);
+            this.dataGridView2.Size = new System.Drawing.Size(463, 259);
             this.dataGridView2.TabIndex = 0;
             // 
             // Type1
@@ -277,6 +273,10 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
             // 
+            // classManagerBindingSource
+            // 
+            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,11 +300,11 @@
             this.Text = "Form1";
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

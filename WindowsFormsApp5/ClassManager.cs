@@ -173,13 +173,13 @@ namespace classGenerator
         public List<string> getAttributManager()
         {
             List<string> line = new List<string>();
-
+            string name = FirstCharToUpper(this.name);
             line.Add(" ");
             line.Add("    //Connection PDO");
             line.Add("    private $db ;");
             line.Add(" ");
             line.Add("    /**");
-            line.Add("     * UserUpdater constructor.");
+            line.Add("     * " + name  +"Updater constructor");
             line.Add("     * @param $db : database");
             line.Add("     */");
             line.Add("      public function __construct($db)");
@@ -196,14 +196,14 @@ namespace classGenerator
             List<string> line = new List<string>();
             string name = FirstCharToUpper(att.getName());
             line.Add(" ");
-            line.Add("/**");
-            line.Add("  *@return " + att.getType());
-            line.Add("  */");
-            line.Add("  ");
-            line.Add("public function get" + name + "()");
-            line.Add("{");
-            line.Add("    return $this->" + att.getName() +";");
-            line.Add("}");
+            line.Add("    /**");
+            line.Add("    *@return " + att.getType());
+            line.Add("    */");
+            line.Add("    ");
+            line.Add("     public function get" + name + "()");
+            line.Add("     {");
+            line.Add("          return $this->" + att.getName() +";");
+            line.Add("     }");
 
             return line;
         }
@@ -215,14 +215,14 @@ namespace classGenerator
             string name = FirstCharToUpper(att.getName());
 
             line.Add(" ");
-            line.Add("/**");
-            line.Add("  *@param " + att.getType() + " $" + att.getName());
-            line.Add("  */");
-            line.Add("  ");
-            line.Add("public function set" + name + "( $" + att.getName() + " )");
-            line.Add("{");
-            line.Add("    $this->" + att.getName() + " = $" + att.getName() + ";");
-            line.Add("}");
+            line.Add("     /**");
+            line.Add("     *@param " + att.getType() + " $" + att.getName());
+            line.Add("     */");
+            line.Add("     ");
+            line.Add("      public function set" + name + "( $" + att.getName() + " )");
+            line.Add("      {");
+            line.Add("           $this->" + att.getName() + " = $" + att.getName() + ";");
+            line.Add("      }");
 
             return line;
         }
@@ -283,8 +283,9 @@ namespace classGenerator
             line.Add("          if($check == 1)");
             line.Add("          {");
             line = this.fillDataSelect(principalTable, attibutMan, line);
-            line.Add("              return $user");
+            line.Add("              return $" + this.name + " ;");
             line.Add("          }");
+            line.Add("      }");
 
             return line;
         }
@@ -365,11 +366,11 @@ namespace classGenerator
         private List<string> fillDataSelect(string principalTable, List<AttributManager> attibutMan, List<string> line)
         {
             line.Add("              $" + this.name +" = new " + this.name +"();");
-            line.Add("              $userinfo = $selectDb->fetch(PDO::FETCH_ASSOC);");
+            line.Add("              $info = $selectDb->fetch(PDO::FETCH_ASSOC);");
             foreach (AttributManager result in this.attributsDb)
             {
 
-                 line.Add("              $" + this.name + "->set" + result.getName() + " ( $userinfo['" + result.getNameInDb()  + "'] ); ");
+                 line.Add("              $" + this.name + "->set" + result.getName() + " ( $info['" + result.getNameInDb()  + "'] ); ");
             }
 
             return line;
