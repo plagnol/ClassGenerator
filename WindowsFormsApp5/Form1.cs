@@ -18,6 +18,8 @@ namespace WindowsFormsApp5
 
         private string selectedPath;
 
+        private Boolean folderIsSelected = false;
+
         public Form1()
         {
             
@@ -50,6 +52,8 @@ namespace WindowsFormsApp5
             System.IO.File.WriteAllLines(@pathString, test );
 
             MessageBox.Show("File generated");
+
+            this.folderIsSelected = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -65,6 +69,7 @@ namespace WindowsFormsApp5
         {
             folderBrowserDialog1.ShowDialog();
             this.selectedPath = folderBrowserDialog1.SelectedPath;
+            this.folderIsSelected = true;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -72,6 +77,66 @@ namespace WindowsFormsApp5
             while (true)
             {
                 this.classManager.setName(this.textBox2.Text);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.folderIsSelected)
+            {
+                //Generate asset folder
+                string pathAssets = System.IO.Path.Combine(this.selectedPath, "assets");
+                System.IO.Directory.CreateDirectory(pathAssets);
+                //Folder in asset folder
+                //Css folder
+                string pathAssetsCss = System.IO.Path.Combine(pathAssets, "css");
+                System.IO.Directory.CreateDirectory(pathAssetsCss);
+                //Font folder
+                string pathAssetsFont = System.IO.Path.Combine(pathAssets, "fonts");
+                System.IO.Directory.CreateDirectory(pathAssetsFont);
+                //Ico folder
+                string pathAssetsIco = System.IO.Path.Combine(pathAssets, "ico");
+                System.IO.Directory.CreateDirectory(pathAssetsIco);
+                //Img folder
+                string pathAssetsImg = System.IO.Path.Combine(pathAssets, "img");
+                System.IO.Directory.CreateDirectory(pathAssetsImg);
+                //Js folder
+                string pathAssetsJs = System.IO.Path.Combine(pathAssets, "js");
+                System.IO.Directory.CreateDirectory(pathAssetsJs);
+
+                //Generate cache folder
+                string pathCache = System.IO.Path.Combine(this.selectedPath, "cache");
+                System.IO.Directory.CreateDirectory(pathCache);
+                //Folder in cache folder
+                //Generate database folder
+                string pathDatabase = System.IO.Path.Combine(pathCache, "database");
+                System.IO.Directory.CreateDirectory(pathDatabase);
+
+                //Generate ressources folder
+                string pathRessource = System.IO.Path.Combine(this.selectedPath, "ressources");
+                System.IO.Directory.CreateDirectory(pathRessource);
+
+                //Generate src folder
+                string pathSrc = System.IO.Path.Combine(this.selectedPath, "src");
+                System.IO.Directory.CreateDirectory(pathSrc);
+                //Folder in src folder
+                //Generate controler folder
+                string pathController = System.IO.Path.Combine(pathSrc, "controler");
+                System.IO.Directory.CreateDirectory(pathController);
+                //Generate model folder
+                string pathModel = System.IO.Path.Combine(pathSrc, "model");
+                System.IO.Directory.CreateDirectory(pathModel);
+                //Generate views folder
+                string pathView = System.IO.Path.Combine(pathSrc, "view");
+                System.IO.Directory.CreateDirectory(pathView);
+
+                //Generate vendor folder
+                string pathVendor = System.IO.Path.Combine(this.selectedPath, "vendor");
+                System.IO.Directory.CreateDirectory(pathVendor);
+            }
+            else
+            {
+                MessageBox.Show("You have to choose a folder before generate MVC model");
             }
         }
     }

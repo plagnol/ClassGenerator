@@ -40,8 +40,10 @@
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).BeginInit();
@@ -127,10 +129,6 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // classManagerBindingSource
-            // 
-            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,11 +138,36 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Where to save : ";
             // 
+            // classManagerBindingSource
+            // 
+            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Create MVC folder :";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(116, 117);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(73, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Create";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 478);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label3);
@@ -176,6 +199,8 @@
         private System.Windows.Forms.BindingSource classManagerBindingSource;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button3;
     }
 }
 
