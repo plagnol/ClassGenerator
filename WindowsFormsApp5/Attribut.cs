@@ -10,7 +10,7 @@ namespace classGenerator
      * 
      * Attribut of a class
      * 
-     **/
+     */
     class Attribut
     {
         //Name of the attribut
@@ -29,7 +29,7 @@ namespace classGenerator
          * set the name and the type of the attribut
          * 
          * return void
-         **/
+         */
         public Attribut(string nameSend, string typeSend)
         {
             this.setName(nameSend);
@@ -40,7 +40,7 @@ namespace classGenerator
          * Get the name of the attribut
          * return
          * string @this.name
-         **/
+         */
         public string getName()
         {
             return this.name;
@@ -50,7 +50,7 @@ namespace classGenerator
          * Get the type of the attribut
          * return
          * string @this.type
-         **/
+         */
         public string getType()
         {
             return this.type;
@@ -59,7 +59,7 @@ namespace classGenerator
          * Set the name of the attribut
          * param 
          * string @nameSend 
-         **/
+         */
         public void setName(string nameSend)
         {
             this.name = nameSend;
@@ -69,7 +69,7 @@ namespace classGenerator
          * Set the type of the attribut
          * param 
          * string @typeSend 
-         **/
+         */
         public void setType(string typeSend)
         {
             this.type = typeSend;

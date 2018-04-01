@@ -31,7 +31,7 @@ namespace WindowsFormsApp5
         /**
          * Generate Button
          * Launch the function which generate file class.php 
-         **/
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             this.generate();
@@ -40,16 +40,16 @@ namespace WindowsFormsApp5
          * Generate function
          * generate file in php
          * 
-         **/
+         */
         public void generate()
         {
             string fileName = this.classManager.getName() + ".class.php";
 
             string pathString = System.IO.Path.Combine(this.selectedPath, fileName);
 
-            string[] test = { "test", "lol" };
+            string[] header = this.classManager.setHeader();
 
-            System.IO.File.WriteAllLines(@pathString, test );
+            System.IO.File.WriteAllLines(@pathString, header );
 
             MessageBox.Show("File generated");
 
@@ -64,7 +64,7 @@ namespace WindowsFormsApp5
         /**
         * Choose the folder to save the file on click
         * this.selectedPath become the save folder
-        **/
+        */
         private void button2_Click_1(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
@@ -137,6 +137,14 @@ namespace WindowsFormsApp5
             else
             {
                 MessageBox.Show("You have to choose a folder before generate MVC model");
+            }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+
             }
         }
     }

@@ -41,9 +41,10 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
-            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.classManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classManagerBindingSource)).BeginInit();
@@ -138,10 +139,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Where to save : ";
             // 
-            // classManagerBindingSource
-            // 
-            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -160,6 +157,14 @@
             this.button3.Text = "Create";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // classManagerBindingSource
+            // 
+            this.classManagerBindingSource.DataSource = typeof(classGenerator.ClassManager);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             // 
             // Form1
             // 
@@ -201,6 +206,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }
 
