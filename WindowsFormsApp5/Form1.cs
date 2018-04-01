@@ -92,7 +92,17 @@ namespace WindowsFormsApp5
 
             if (this.isConnectDb)
             {
-                
+                //Set the file nameUpdater
+                string fileNameUpdater = this.classManager.getName() + "Updater.class.php";
+
+                //Set the path to save the file
+                string pathStringUpdater = System.IO.Path.Combine(this.selectedPath, fileNameUpdater);
+
+                //Set the header of the file
+                string[] headerDb = this.classManager.setHeader();
+                System.IO.File.WriteAllLines(@pathStringUpdater, headerDb);
+
+
                 MessageBox.Show("Files generated");
 
                 this.folderIsSelected = false;
@@ -243,9 +253,7 @@ namespace WindowsFormsApp5
                 {
 
                 }           
-            }
-
-            this.attManager.setListAttributs(this.classManager.getListAttributs());
+            }           
         }
     }
 }

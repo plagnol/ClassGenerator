@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace classGenerator
 {
-    class AttributManager
+    class AttributManager:Attribut
     {
-        private List<Attribut> attributs;
+        private string nameInDb;
 
-        /**
-        * Get the list of attributs of the class
-        * return 
-        * List<Attribut> 
-        */
-        public List<Attribut> getListAttributs()
+        private Boolean isPrimary;
+
+        public string getNameInDb()
         {
-            return this.attributs;
+            return this.nameInDb;
         }
 
-        /**
-         * Get the list of attributs of the class
-         * param 
-         * List<Attribut> 
-         */
-        public void setListAttributs(List<Attribut> att)
+        public Boolean getIsPrimary()
         {
-            this.attributs = att;
+            return this.isPrimary;
         }
 
+        public void setNameInDb(string name)
+        {
+            this.nameInDb = name;
+        }
 
+        public void setPrimaryKey(Boolean primary)
+        {
+            this.isPrimary = primary;
+        }
     }
 }
